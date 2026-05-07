@@ -8,7 +8,77 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background: #111;
+            color: #eee;
+        }
+
+        .accordion-item {
+            background-color: #1b1b1b;
+            border: 1px solid #444;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .accordion-button {
+            background-color: #222;
+            color: #f0e6c8;
+            font-weight: bold;
+            border: none;
+            box-shadow: none;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #2f2a1f;
+            color: #ffd166;
+            box-shadow: none;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: #666;
+        }
+
+        .accordion-button::after {
+            filter: invert(1);
+        }
+
+        .accordion-body {
+            background-color: #181818;
+            color: #ddd;
+        }
+
+        .card {
+            background-color: #1b1b1b;
+            border: 1px solid #444;
+            color: #ddd;
+        }
+
+        hr {
+            border-color: #555;
+        }
+
+        strong {
+            color: #ffd166;
+        }
+
+        em {
+            color: #ccc;
+        }
+
+        .section-title {
+            color: #ffd166;
+        }
+
+        .small-text {
+            color: #ddd;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -21,45 +91,602 @@
 <!-- Content -->
 <div class="container content">
 
-    <!-- Character Header -->
+    <!-- Artifact Header -->
     <div class="text-center">
-        <h1 class="section-title">Artifact Name</h1>
-        <p class="small-text"><em>Type | Sentience | Alignment</em></p>
+        <h1 class="section-title">Emberleaf Codex</h1>
+        <p class="small-text"><em>Wondrous item, legendary (requires attunement by a character with proficiency in Performance, Arcana, or History)</em></p>
     </div>
 
-    <!-- Three Column Layout -->
+    <!-- Main Layout -->
     <div class="row mt-4">
 
-        <!-- Left Column: Image -->
+        <!-- LEFT COLUMN -->
         <div class="col-md-4">
-            <div class="card p-3">
-                <img src="artifact.jpg" class="img-fluid rounded" alt="Character Image">
-            </div>
-        </div>
 
-        <!-- Middle Column: Stats & Details -->
-        <div class="col-md-4">
+            <!-- Artifact Image -->
             <div class="card p-3 mb-3">
-                <h5 class="section-title">Stats</h5>
-                <ul class="small-text">
-                    <li>Power:</li>
-                    <li>Power:</li>
-                    <li>Power:</li>
-                </ul>
+                <img src="artifact.jpg" class="img-fluid rounded" alt="Artifact Image">
             </div>
-        </div>
 
-        <!-- Right Column: Story -->
-        <div class="col-md-4">
+            <!-- Description -->
             <div class="card p-3 mb-3">
                 <h4 class="section-title">Description</h4>
-                <p class="small-text">Write the artifacts's description here...</p>
+                <p class="small-text">
+                    Write the artifact's description here...
+                </p>
             </div>
 
+            <!-- History -->
             <div class="card p-3">
                 <h4 class="section-title">History</h4>
-                <p class="small-text">Write the artifacts history here...</p>
+                <p class="small-text">
+                    Write the artifact's history here...
+                </p>
             </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="col-md-8">
+
+            <div class="accordion" id="storyAccordion">
+
+                <!-- STORY 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse1">
+                            🔥 The Ember and the Orchard
+                        </button>
+                    </h2>
+
+                    <div id="collapse1"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+
+                        <div class="accordion-body">
+
+                            <p>
+							Long ago, a fire spirit wandered the world, yearning for something that would not burn. In a quiet valley, it found a lone apple tree sleeping through the cold. The spirit, fascinated, danced around the tree each night, warming its roots and whispering flame-born lullabies. When spring finally came, the tree awakened—not scorched, but changed. Its branches bore blossoms in winter, its bark shimmered with heatless light, and it spoke the fire spirit’s name in rustling leaves. The fire spirit, satisfied, vanished on the wind. Yet the orchard that grew from that tree has never seen frost, and the <em>apples burn with a sweetness that never spoils</em>.
+                            </p>
+
+                            <hr>
+
+                            <strong>Effect:</strong>
+
+                            <p>
+                                For 1 hour, the reader gains <strong>+1d6 fire damage</strong> on all weapon attacks and may cast
+                                <strong>Fire Shield</strong> (warm shield only) once.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STORY 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse2">
+                            🌊 The Weeping Wave
+                        </button>
+                    </h2>
+
+                    <div id="collapse2"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+
+                        <div class="accordion-body">
+
+                            <p>
+                                In a salt-bitten village perched above the cliffs, the sea would rise each spring and tear down homes as if reclaiming something lost. One year, a girl stood on the shore and sang—not in anger, but in apology. The sea paused. A single wave curled gently around her and drew her under. The villagers mourned her as drowned, but weeks later, she returned, walking ashore with eyes like stormglass and a crown of kelp. <em>Her voice held the hush of the tide</em>, and her songs could part fog, summon rain, or calm beasts. She never spoke of where she went, only that the sea listens when treated kindly.
+                            </p>
+
+                            <hr>
+
+                            <strong>Effect:</strong>
+
+                            <p>
+                                For 1 hour, the reader gains ability to <strong>breathe water</strong> and can cast <strong>Control Water</strong>, <strong>Watery Sphere</strong>, and <strong>Water Breathing (on others)</strong> once each.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STORY 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse3">
+                            🌪️ Whispers on the Wind
+                        </button>
+                    </h2>
+
+                    <div id="collapse3"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+
+                        <div class="accordion-body">
+
+                            <p>
+                                A shepherd boy once heard voices calling from the sky. Ignoring the warnings of his village, he climbed the tallest peak barefoot, chased by whispers only he could hear. For three days he climbed without food or sleep, until the air itself began to shimmer. At the summit, he found no person—<em>only the wind itself</em>, swirling in spirals, giggling in gusts. It had no form, no face, only laughter and language, and it had chosen him to hear it. He descended lighter than air, and from that day forward, storms parted for him, birds followed him, and secrets rode his breath.
+                            </p>
+
+                            <hr>
+
+                            <strong>Effect:</strong>
+
+                            <p>
+                                For 1 hour, the reader gains a <strong>fly speed</strong> equal to their standard speed +10 ft, <strong>gain “Windfury”</strong> – an extra melee attack when taking the attack action (limit 10 times during the hour) and may cast <strong>Gust of Wind</strong> twice.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STORY 4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse4">
+                            ❄️ The Snow-Still Heart
+                        </button>
+                    </h2>
+
+                    <div id="collapse4"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+
+                        <div class="accordion-body">
+
+                            <p>
+                                In a quiet mountain village where the chill wind never ceased its mourning, there lived a girl born with frost in her breath and <em>ice in her veins</em>. Her touch could freeze a kettle mid-boil, and no fire warmed her. The villagers feared her, called her cursed, and locked her in a glass house atop a cliff. But the snows loved her. They whispered her lullabies and wove her gowns from moonlight and rime. One winter, when an avalanche threatened the valley, she walked into the storm barefoot and unblinking. With a single exhale, she halted the mountain’s wrath. The snow stilled, the skies hushed—and in the silence, she vanished, leaving behind only a single perfect snowflake that never melts.
+                            </p>
+
+                            <hr>
+
+                            <strong>Effect:</strong>
+
+                            <p>
+                                For 1 hour, the reader gains resistance to cold damage, their melee attacks deal an additional <strong>+1d6 cold damage</strong>, and they may cast <strong>Armor of Agathys</strong> at 3rd spell level once.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STORY 5 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse5">
+                            ☀️ The Sun That Forgot to Rise
+                        </button>
+                    </h2>
+
+                    <div id="collapse5"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+
+                        <div class="accordion-body">
+
+                            <p>
+                                One dawn, the sun failed to rise, and shadows grew teeth. Crops withered in an hour. Children cried in sleep. Amidst the darkness, a clever girl climbed the tallest tower, holding a polished bronze mirror. With a trick of angles, she caught the glint of yesterday’s light trapped in dew and flashed it skyward. Startled awake, the sun blinked, laughed, and <em>rose twice as bright</em> to make amends. The girl’s descendants walk in a haloed light, and it is said that shadows still shy away from her bloodline.
+                            </p>
+
+                            <hr>
+
+                            <strong>Effect:</strong>
+
+                            <p>
+                                For 1 hour, the reader emits bright light in a 10 ft radius, enemies have disadvantage on ranged attacks again you, and may cast <strong>Faerie Fire</strong> one time, and <strong>Daylight</strong> three times.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 6  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse6">
+                            🌑 The Story of No-Name
+                        </button>
+                    </h2>
+                    <div id="collapse6"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                There was once a thief so skilled that she stole her own identity. She crept through palaces as a prince, danced at balls as a duchess, and confessed to crimes committed by no one. Over time, even she forgot her real name. But in forgetting, she became something more—unseen, untethered, unbound. Not even the gods could remember her face. She whispered lies into histories, turning kings into paupers and heroes into myths. Now, stories of her change with every telling. Perhaps she reads this very story, <em>beside you in shadow</em>.
+                            </p>
+                            <hr>
+                            <strong>Effect:</strong>
+                            <p>
+                                For 1 hour, the reader gains advantage on Stealth checks and may cast <strong>Invisibility</strong>, <strong>Pass Without Trace</strong>, and <strong>Silence</strong> once each.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 7  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse7">
+                            ⚡ The Skyhook Pact
+                        </button>
+                    </h2>
+                    <div id="collapse7"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                In the heart of a wind-scoured plain stood a girl who refused to kneel. Her people had long feared the storm—a wrathful spirit cloaked in lightning—but she saw not fury, only hunger. On the night of the black gale, she lashed a steel chain to the tallest stone and raised it to the sky. The storm struck, once, twice—then paused. Through the acrid smoke, the girl still stood, hair alight with static, laughter crackling in her throat. The storm did not strike again. It spoke, in <em>thunderous booms and arcing pulses</em>, and the girl answered. When dawn broke, she was gone—but the stone hummed with her name, and every bolt since has bent slightly toward it.
+                            </p>
+                            <hr>
+                            <strong>Effect:</strong>
+                            <p>
+                                For 1 hour, the reader’s weapon attacks deal <strong>+1d6 lightning damage</strong>, and the reader may cast <strong>Lightning Bolt</strong> once. If standing outdoors during a storm, the spell deals maximum damage.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 8  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse8">
+                            🛡 The Roar Without a Beast
+                        </button>
+                    </h2>
+                    <div id="collapse8"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                There was once a village that lived in fear of a creature that no one had seen, but all had heard—a deep roar from the mountains that froze even fire in its hearth. Each year, the roar came closer, until the <em>bravest among them</em>, a one-armed blacksmith, climbed the slopes alone. He carried no blade, only his hammer, and no shield but a vow: “If it takes me, it will remember me.” He never returned. But the roars stopped. In his forge, long since gone cold, was found a single bootprint scorched into stone—far too large to be his.
+                            </p>
+                            <hr>
+                            <strong>Effect:</strong>
+                            <p>
+                                For 1 hour, the reader becomes immune to the frightened condition, gains <strong>+1 to AC</strong>, and may cast <strong>Heroism</strong> and <strong>Shield of Faith</strong> once each.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 9  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse9">
+                            🌙 The Moon’s Second Face
+                        </button>
+                    </h2>
+                    <div id="collapse9"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                A lonely astronomer watched the moon each night and noticed things others did not—shifts in its gaze, ripples in its light. One night, it blinked. On the next full moon, a figure made of <em>moonlight descended</em>, her face half in shadow. “You have seen my secret,” she whispered. “Now see the world as I do.” She kissed his forehead, and for a single night, he wandered among dreams and illusions, where time moved backward and stars sang. When he awoke, his hair was silver, his eyes aglow. He never aged again, and he never slept, for the moon watched over him, even when he looked away.
+                            </p>
+                            <hr>
+                            <strong>Effect:</strong>
+                            <p>
+                                For 1 hour, the reader gains darkvision out to 120 feet, immunity to radiant damage, resistance to psychic damage, and may cast <strong>Moonbeam</strong> and <strong>See Invisibility</strong> once each.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 10  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse10">
+                            🃏 The Coyote and the Clockmaker
+                        </button>
+                    </h2>
+                    <div id="collapse10"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                A clockmaker once prided himself on perfect time. Every chime struck true, every second known. One day, a coyote walked into his shop, dressed in bells and smiles, and asked to buy a minute. The clockmaker refused. So the coyote stole it—and the next minute, and the next, until <em>time unraveled like ribbon</em>. The townsfolk danced in reverse. Babies scolded their mothers. The sun rose into the west and set into dreams. To set things right, the clockmaker bargained a trick for a trick. He still tells time, but now it lies.
+                            </p>
+                            <hr>
+                            <strong>Effect:</strong>
+                            <p>
+                                For 1 hour, the reader gains advantage on Wisdom Checks and Saving Throws, and may cast <strong>Haste</strong> (Self Only) and <strong>Misty Step</strong> once each.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Story 11  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse11">
+                            🪨 The Mountain King
+                        </button>
+                    </h2>
+                    <div id="collapse11"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                Beneath the mountain roots, where no sun ever touched, a child was born from stone. His mother was silence, his father the weight of the world. He spoke the language of ore and sang to sleeping gems. When dwarves tunneled into his cradle, he welcomed them—not with gold, but with knowledge: which <em>stones held strength</em>, which veins sang war, which cracks whispered secrets. They crowned him King Below, though he never wore a crown—only dust, and a smile heavy as bedrock.
+                            </p>
+                            <hr>
+                            <strong>Effect:</strong>
+                            <p>
+                                For 1 hour, the reader gains <strong>tremorsense</strong> out to 30 feet, resistance to bludgeoning damage, add <strong>+1d6</strong> to the damage of melee bludgeoning attacks, advantage on Constitution Checks and Saving Throws, and may cast <strong>Stone Shape</strong> once.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 12  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse12">
+                            ✨ The Tower That Dreamed
+                        </button>
+                    </h2>
+                    <div id="collapse12"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                There once stood a tower with no doors and no windows, made of polished obsidian and etched with constellations that had never been seen. No one built it. It simply was. The villagers whispered that it had been a wizard’s final thought before he died, crystallized into stone by the force of his ambition. Many came to study it, but none could enter—until a child who had never studied a spell spoke its name aloud, though it had never been taught to him. The tower opened for him. He walked in and did not return for a century. When he finally stepped out, time curved around his steps, and <em>magic bent toward him</em> like flowers to the sun.
+                            </p>
+                            <hr>
+                            <strong>Effect:</strong>
+                            <p>
+                                For 1 hour, the reader gains Advantage on Intelligence checks and Saving Throws, spell save DC and spell attack bonus each increase by +1, and may cast <strong>Arcane Eye</strong> and <strong>Counterspell</strong> once each at character level.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 13  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse13">
+                            ☠️ The Garden of Quiet Ends
+                        </button>
+                    </h2>
+                    <div id="collapse13"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                Far beyond the edges of the known woods, where birds do not sing and no seasons pass, lies a garden that grows in perfect stillness. The trees there are white as bone, and the flowers bloom only once—when something dies nearby. It is said that a mortal once wandered in, weeping from loss, and lay down among the ivy. From her breath rose a final petal, and when it touched the soil, the garden opened its eyes. She spoke gently to the worms and the rot, and they crowned her queen—not of life, but of endings. Under her rule, <em>decay was no longer a curse</em>, but a promise: that everything broken would return to earth, and rest.
+                            </p>
+                            <hr>
+                            <strong>Effect:</strong>
+                            <p>
+                                For 1 hour, the reader gains resistance to necrotic damage, when they reduce a creature to 0 HP, regain 2d8 HP (once per turn), and can cast <strong>Animate Dead</strong> and <strong>Speak with Dead</strong> once each.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Story 14  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse14">
+                            🔮 The Wyrd Feast
+                        </button>
+                    </h2>
+                    <div id="collapse14"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                In a sunless corner of the world, beneath a sky stitched shut with black thread, an endless banquet stretches across a hall carved from bone and root. The guests wear masks that breathe, and their laughter sounds like chimes in a storm. They dine not on food, but on thoughts, dreams, and the memory of memory. A stranger once wandered into the feast—hooded, silent, and <em>famished for meaning</em>. They were offered a goblet filled with their own forgotten fears, and as they drank, their eyes turned inside out to witness truths never meant for mortals. Now they sit at the head of the table, wearing a crown of candle flames and humming a song no living mouth can sing. The feast continues, eternal, beneath and above the world.
+                            </p>
+                            <hr>
+                            <strong>Effect:</strong>
+                            <p>
+                                For 1 hour, the reader gains resistance to necrotic and psychic damage. Once during this time, they may cast <strong>Arms of Hadar</strong> (DC 16). For the duration, aberrations have disadvantage on all attacks against you, and you have advantage on all Saving Throws against the abilities and spells of aberrations – This property ends if you deal damage to the aberration.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Story 15  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse15">
+                            🌫️ The Mirror Masquerade
+                        </button>
+                    </h2>
+                    <div id="collapse15"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                Atop a hill that doesn’t appear on any map, once a year when the moon wanes to a perfect silver sliver, the Mirror Masquerade is held. The revelers arrive with no memory of how they got there, dressed in finery that reflects the dreams they never pursued. Every surface—from the wine to the dancers’ eyes—shows not what is, but what might have been. As the music swells, the guests trade identities like playing cards, twirling through <em>realities where truth is negotiable</em>. It’s said that those who remove their masks vanish forever—some say into their own reflections, others into the stories of others.
+                            </p>
+                            <hr>
+                            <strong>Effect:</strong>
+                            <p>
+                                For 1 hour, the reader may cast <strong>Mirror Image</strong> at will. They have advantage on saving throws against illusion spells, and cause disadvantage to enemies saving against their illusion spells. Additionally, illusion spells the reader casts inflict +1die of damage. Once during this time, they may cast <strong>Major Image</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Story 16  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse16">
+                            🐾 The Pact of Hollow Hill
+                        </button>
+                    </h2>
+                    <div id="collapse16"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                When the world was still young and shadows stretched long over the earth, a lonely shepherd knelt beneath a hill riddled with roots and old bones. He whispered a plea not in words, but in the <em>hum of wind over fur and fang</em>. Something old and antlered answered—a spirit with moss in its voice and teeth like bark. In exchange for a promise never to raise hand against nature, the Hollow King granted the shepherd a guardian for every star in the sky. Wolves padded beside him, crows perched on his shoulders, and a bear slept at his feet. He was never alone again, nor lost, even in the deepest woods. The pact remains, offered in silence to those who still know how to listen.
+                            </p>
+                            <hr>
+                            <strong>Effect:</strong>
+                            <p>
+                                For 1 hour, the reader may cast <strong>Conjure Animals</strong> and <strong>Speak with Animals</strong> once each. Beasts will not attack them unless magically compelled to or attacked by the reader. Gain advantage on Animal Handling and Nature checks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Story 17  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse17">
+                            🎩 A Toast in Thorns
+                        </button>
+                    </h2>
+                    <div id="collapse17"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                In a rose-choked manor lost to time, nobles gather for a toast that never ends. They sip golden wine from gilded goblets and speak in riddles polished by centuries. None remember what was first celebrated—only that the host wears a mask made of pearl and gold, and that to refuse the toast is to wither on the spot. As the rose vines creep ever deeper into the banquet hall, guests bloom with opulence—clothing that shimmers with luster, voices laced with honey, and smiles too sharp to be kind. The toast always returns to the same phrase: <em>May beauty bind the blade</em>. When the wine is spilled, it stains the air red and never falls.
+                            </p>
+                            <hr>
+                            <strong>Effect:</strong>
+                            <p>
+                                For 1 hour, gain advantage on Charisma checks and Saving Throws. Once during the hour, you may cast <strong>Charm Monster</strong>. Enemies who attack you for the first time must succeed on a DC 16 Wisdom saving throw or waste their action admiring you instead.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Story 18  -->
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse18">
+                            🧠 The Though Theif's Ledger
+                        </button>
+                    </h2>
+
+                    <div id="collapse18"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+
+                        <div class="accordion-body">
+
+                            <p>
+                                There exists a slim, ink-black figure that slips through the cracks in memory. It calls itself the Thought Thief, though it has a thousand other names, all forgotten. Each night, it <em>picks the pockets of sleeping minds</em>, pulling out forgotten faces, mislaid words, and the directions to dreams never taken. In a ledger stitched from silence, it records each theft in dream-ink, stored for reasons no one understands—not even the thief itself. It is not cruel, only curious. Those who read from its ledger gain strange clarity, as if briefly standing outside their own thoughts, able to turn them over like coins. But every clarity leaves a fog somewhere else.
+                            </p>
+
+                            <hr>
+
+                            <strong>Effect:</strong>
+
+                            <p>
+                                For 1 hour, the reader gains <strong>advantage on Intelligence, Wisdom, and Charisma saving throws</strong>. Gain the <strong>Mind Sliver</strong> Cantrip with an additional +1d6 damage. Once during the hour, they may cast <strong>Detect Thoughts</strong>.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+         
+                <!-- Story 19  -->
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse19">
+                            🐉 The Last Word of Verithrax
+                        </button>
+                    </h2>
+
+                    <div id="collapse19"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#storyAccordion">
+
+                        <div class="accordion-body">
+
+                            <p>
+                                High atop a forgotten peak, where even the clouds dare not linger, the dragon Verithrax carved his thoughts into stone. Not his hoard—though he had one vast enough to flood kingdoms—but his words. With claws of molten gold, he etched proverbs, riddles, and spells into the mountainside, each one a fragment of his wisdom and wrath. As centuries passed and his body turned to ash in a final storm of lightning and flame, only the stones remained. Travelers who sleep among them wake speaking languages they never knew, dreaming of flight, and <em>feeling power within them</em>. It is said the mountain now speaks to those who listen—not with a voice, but with a presence that curls like smoke around the soul.
+                            </p>
+
+                            <hr>
+
+                            <strong>Effect:</strong>
+
+                            <p>
+                                For 1 hour, the reader gains <strong>resistance to one damage type</strong> of their choice: fire, cold, lightning, acid, or poison. They may also cast <strong>Legend Lore</strong> once. Once during this hour, they may use a <strong>breath weapon</strong>: As an action, exhale a 30-ft cone (Dexterity Save DC 16). Creatures take 6d8 damage of the chosen type on a failure, or half on a success.
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
 
     </div>
@@ -68,6 +695,7 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
 fetch("navbar.html")
   .then(response => response.text())
@@ -75,5 +703,6 @@ fetch("navbar.html")
     document.getElementById("navbar").innerHTML = data;
   });
 </script>
+
 </body>
 </html>
