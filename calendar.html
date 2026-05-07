@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forgotten Realms Calendar</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body { 
+      background:#121212; 
+      color:#e0e0e0; 
+      font-family: Georgia, serif; 
+    }
+	
+	.banner {
+	  width: 100%;
+	  height: 150px;
+	  background-image: url("images/banner.png");
+	  background-repeat: repeat-x;
+	  background-size: auto 50px;
+	}
+
+    /* NAVBAR */
+    .navbar {
+      background-color: #1f1f1f;
+    }
+
+    .nav-link {
+      color: #f5f5f5 !important;
+      font-weight: bold;
+    }
+
+    .nav-link:hover {
+      color: #ffd700 !important;
+    }
+
+    .navbar-brand {
+      color: #f5f5f5 !important;
+    }
+
+    .navbar-toggler-icon {
+      filter: invert(1);
+    }
+
+    .calendar { 
+      max-width: 900px; 
+      margin: 30px auto; 
+    }
+
+    .header { 
+      display:flex; 
+      justify-content:space-between; 
+      align-items:center; 
+    }
+
+    .month-title { 
+      color:#ffd700; 
+    }
+
+    .grid { 
+      display:grid; 
+      grid-template-columns: repeat(10, 1fr); 
+      gap:6px; 
+      margin-top:15px; 
+    }
+
+    .day, .festival, .event-day { 
+      padding:10px; 
+      text-align:center; 
+      border-radius:8px; 
+      cursor:pointer; 
+    }
+
+    .day { 
+      background:#1f1f1f; 
+      position:relative; 
+    }
+
+    /* NEW: EVENT DAYS */
+    .event-day {
+      background: #2a3f5f;   /* dark arcane blue */
+      border: 1px solid #5aa9ff;
+    }
+
+    .event-day:hover {
+      background: #365a86;
+    }
+
+    .festival { 
+      background:#5a3d00; 
+      color:#ffd700; 
+      font-weight:bold; 
+    }
+
+    .moon { 
+      font-size:0.8em; 
+      display:block; 
+      margin-top:5px; 
+      color:#ccc;
+    }
+
+    button { 
+      background:#333; 
+      color:white; 
+      border:none; 
+      padding:6px 12px; 
+      border-radius:6px; 
+    }
+
+    button:hover { 
+      background:#555; 
+    }
+
+    .legend { 
+      margin-top:20px; 
+      font-size:0.9em; 
+      color:#ccc;
+    }
+
+    /* LEGEND COLORS */
+    .legend-box {
+      display:inline-block;
+      width:12px;
+      height:12px;
+      border-radius:3px;
+      margin-right:6px;
+      vertical-align:middle;
+    }
+
+    .legend-event { 
+		background:#2a3f5f; 
+		border:1px solid #5aa9ff; 
+	}
+	
+    .legend-festival { 
+		background:#5a3d00; 
+	}
+	
+    .legend-normal { 
+		background:#1f1f1f; 
+		border:1px solid #333; 
+	}
+
+  </style>
+</head>
+
+<body>
+
+<!-- Banner -->
+<img src="images/banner.png" alt="Banner" class="banner">
+
+<div class="container calendar">
+
+<!-- NAVBAR -->
+<div id="navbar"></div>
+
+<!-- CALENDAR HEADER -->
+<div class="header mt-4">
+  <button onclick="prevMonth()">◀</button>
+  <h2 class="month-title" id="monthName"></h2>
+  <button onclick="nextMonth()">▶</button>
+</div>
+
+<!-- CALENDAR GRID -->
+<div class="grid" id="calendarGrid"></div>
+
+<!-- LEGEND -->
+<div class="legend">
+
+  <p>
+    <span class="legend-box legend-normal"></span> Normal Day
+  </p>
+
+  <p>
+    <span class="legend-box legend-event"></span> Event Day (Session / Story Event)
+  </p>
+
+  <p>
+    <span class="legend-box legend-festival"></span> Festival Day — Special days between months
+  </p>
+
+  <p>🌑 New | 🌓 Quarter | 🌕 Full | 🌗 Last Quarter</p>
+
+</div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="eventModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle"></h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const months = [
+  "Hammer","Alturiak","Ches","Tarsakh","Mirtul","Kythorn",
+  "Flamerule","Eleasis","Eleint","Marpenoth","Uktar","Nightal"
+];
+
+const festivals = {
+  0: "Midwinter",
+  2: "Greengrass",
+  5: "Midsummer",
+  7: "Highharvestide",
+  8: "Feast of the Moon"
+};
+
+const events = {
+  "Hammer-12": "First signs of a calamity appear. Rumbles.",
+  "Hammer-17": "Calamity! - Impilturian Earthquake",
+  "Ches-1": "The King's Royal Ball at Castle"
+};
+
+let currentMonth = 0;
+
+function getMoonPhase(day) {
+  if (day % 30 === 0) return "🌑";
+  if (day % 15 === 0) return "🌕";
+  if (day % 7 === 0) return "🌓";
+  if (day % 22 === 0) return "🌗";
+  return "";
+}
+
+function openEvent(month, day) {
+  const key = month + "-" + day;
+  document.getElementById("modalTitle").innerText = month + " " + day;
+  document.getElementById("modalBody").innerText =
+    events[key] || "No events recorded... yet.";
+
+  new bootstrap.Modal(document.getElementById('eventModal')).show();
+}
+
+function renderCalendar() {
+  const grid = document.getElementById("calendarGrid");
+  const title = document.getElementById("monthName");
+  grid.innerHTML = "";
+
+  const monthName = months[currentMonth];
+  title.innerText = monthName;
+
+  for (let i = 1; i <= 30; i++) {
+
+    const key = monthName + "-" + i;
+    const hasEvent = events[key];
+
+    const day = document.createElement("div");
+
+    // NEW: apply class based on event
+    if (hasEvent) {
+      day.className = "event-day";
+    } else {
+      day.className = "day";
+    }
+
+    day.innerHTML = i + `<span class='moon'>${getMoonPhase(i)}</span>`;
+    day.onclick = () => openEvent(monthName, i);
+    grid.appendChild(day);
+  }
+
+  if (festivals[currentMonth]) {
+    const fest = document.createElement("div");
+    fest.className = "festival";
+    fest.style.gridColumn = "span 10";
+    fest.innerText = festivals[currentMonth];
+    grid.appendChild(fest);
+  }
+}
+
+function nextMonth() {
+  currentMonth = (currentMonth + 1) % 12;
+  renderCalendar();
+}
+
+function prevMonth() {
+  currentMonth = (currentMonth - 1 + 12) % 12;
+  renderCalendar();
+}
+
+renderCalendar();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+fetch("navbar.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("navbar").innerHTML = data;
+  });
+</script>
+</body>
+</html>

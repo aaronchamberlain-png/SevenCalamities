@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Name</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Banner -->
+<img src="images/banner.png" alt="Banner" class="banner">
+
+<!-- Navigation Bar -->
+<div id="navbar"></div>
+
+<!-- Content -->
+<div class="container content">
+
+    <!-- Character Header -->
+    <div class="text-center">
+        <h1 class="section-title">Character Name</h1>
+        <p class="small-text"><em>Human | Barbarian (Path of the Zealot) | Chaotic Good</em></p>
+    </div>
+
+    <!-- Three Column Layout -->
+    <div class="row mt-4">
+
+        <!-- Left Column: Image -->
+        <div class="col-md-4">
+            <div class="card p-3">
+                <img src="images/zealot_portrait.png" class="img-fluid rounded" alt="Character Image">
+            </div>
+        </div>
+
+        <!-- Middle Column: Stats & Details -->
+        <div class="col-md-4">
+            <div class="card p-3 mb-3">
+                <h5 class="section-title">Stats</h5>
+                <ul class="small-text">
+                    <li>STR:</li>
+                    <li>DEX:</li>
+                    <li>CON:</li>
+                    <li>INT:</li>
+                    <li>WIS:</li>
+                    <li>CHA:</li>
+                </ul>
+
+                <h5 class="section-title">Details</h5>
+                <ul class="small-text">
+                    <li>Level: 3</li>
+                    <li>HP:</li>
+                    <li>AC:</li>
+                    <li>Speed:</li>
+                </ul>
+				<h5 class="section-title">Bound Items</h5>
+                <ul class="small-text">
+                    <li>-</li>
+                    <li>-</li>
+                    <li>-</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Column: Story -->
+        <div class="col-md-4">
+            <div class="card p-3 mb-3">
+                <h4 class="section-title">Backstory</h4>
+                <p class="small-text">Write the character's backstory here...</p>
+            </div>
+
+            <div class="card p-3">
+                <h4 class="section-title">Personality</h4>
+                <p class="small-text">Traits, ideals, bonds, flaws...</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+fetch("navbar.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("navbar").innerHTML = data;
+  });
+</script>
+</body>
+</html>

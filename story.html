@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story - The Seven Calamities</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Georgia', serif;
+    }
+
+	.banner {
+	  width: 100%;
+	  height: 150px;
+	  background-image: url("images/banner.png");
+	  background-repeat: repeat-x;
+	  background-size: auto 50px;
+	}
+
+    .navbar {
+      background-color: #1f1f1f;
+    }
+
+    .nav-link {
+      color: #f5f5f5 !important;
+      font-weight: bold;
+    }
+
+    .nav-link:hover {
+      color: #ffd700 !important;
+    }
+
+    .story-title {
+      color: #ffd700;
+      margin-bottom: 20px;
+    }
+
+    .session-header {
+      background-color: #1f1f1f;
+      color: #ffd700;
+    }
+
+    .accordion-button {
+      background-color: #1f1f1f;
+      color: #f5f5f5;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background-color: #2a2a2a;
+      color: #ffd700;
+    }
+
+    .accordion-body {
+      background-color: #181818;
+      color: #e0e0e0;
+    }
+
+    .session-meta {
+      font-size: 0.9rem;
+      color: #bbbbbb;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Banner -->
+<img src="images/banner.png" class="banner" alt="Banner">
+
+<!-- NAVBAR (same style as NPC page) -->
+<div id="navbar"></div>
+
+<!-- CONTENT -->
+<div class="container mt-5">
+
+  <h1 class="text-center story-title">Campaign Journal</h1>
+
+  <div class="accordion" id="sessionAccordion">
+
+    <!-- SESSION 1 -->
+    <div class="accordion-item bg-dark text-light">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#session1">
+          Session 0 — May 8th, 2026
+        </button>
+      </h2>
+      <div id="session1" class="accordion-collapse collapse show" data-bs-parent="#sessionAccordion">
+        <div class="accordion-body">
+          <p class="session-meta"><strong>In-Game Dates:</strong> Ches 1</p>
+          <p>
+            Players complete characters and their back stories which are integrated into the world, and learn about the world and recent events, including the Impilturian Earthquake on the 17th of Hammer, 1502 DR. 
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSION 2 -->
+    <div class="accordion-item bg-dark text-light">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#session2">
+          Session 2 — null
+        </button>
+      </h2>
+      <div id="session2" class="accordion-collapse collapse" data-bs-parent="#sessionAccordion">
+        <div class="accordion-body">
+          <p class="session-meta"><strong>In-Game Dates:</strong> Ches 1 - ??</p>
+          <p>
+            Placeholder narrative for session 2. Describe consequences of previous choices,
+            new NPC introductions, and unfolding mysteries.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSION 3 -->
+    <div class="accordion-item bg-dark text-light">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#session3">
+          Session 3 — null
+        </button>
+      </h2>
+      <div id="session3" class="accordion-collapse collapse" data-bs-parent="#sessionAccordion">
+        <div class="accordion-body">
+          <p class="session-meta"><strong>In-Game Dates:</strong> ---</p>
+          <p>
+            Placeholder session summary. Expand with key story beats, revelations,
+            and world events tied to the Seven Calamities.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSION 4 -->
+    <div class="accordion-item bg-dark text-light">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#session4">
+          Session 4 — null
+        </button>
+      </h2>
+      <div id="session4" class="accordion-collapse collapse" data-bs-parent="#sessionAccordion">
+        <div class="accordion-body">
+          <p class="session-meta"><strong>In-Game Dates:</strong> --- </p>
+          <p>
+            Placeholder story entry. Include consequences, faction movement,
+            and rising tension in the campaign world.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+fetch("navbar.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("navbar").innerHTML = data;
+  });
+</script>
+</body>
+</html>
