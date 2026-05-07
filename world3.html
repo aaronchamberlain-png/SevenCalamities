@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Interactive Faerûn Map</title>
+<title>Interactive Impiltur Map</title>
 
 <style>
 body {
@@ -29,11 +29,15 @@ svg {
     width: 100%;
     height: auto;
     display: block;
-    background: url('images/Faerun_1e.webp');
-    background-size: cover;
+    margin: 0 auto;
+
     border-radius: 12px;
-    filter: grayscale(80%) contrast(1.2) brightness(0.95);
+
+    /* IMPORTANT: prevents clipping of rounded corners */
+    overflow: hidden;
 }
+
+/* Background image INSIDE SVG is now handled by <image>, not CSS */
 
 .region {
     cursor: pointer;
@@ -83,8 +87,17 @@ svg {
 
 <div class="map-container">
 
-<svg viewBox="0 0 1000 600">
-    <circle class="region" id="region1" cx="795" cy="275" r="65" fill="rgba(255,255,0,0.25)" stroke="yellow" stroke-width="2" />
+<svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+
+    <!-- FIX: proper full-image rendering without cropping -->
+    <image href="images/impiltur_map_zoomed_in.png"
+           x="0" y="0"
+           width="1000" height="600"
+           preserveAspectRatio="xMidYMid meet" />
+
+    <circle class="region" id="region1" cx="525" cy="375" r="45"
+            fill="rgba(255,0,255,0.25)" stroke="magenta" stroke-width="2" />
+
 </svg>
 
 <div class="popup" id="popup">
@@ -102,9 +115,9 @@ const text = document.getElementById("popup-text");
 
 const regions = {
     region1: {
-        name: "Impiltur",
-        lore: "Impiltur is a prosperous, stable, and traditionally 'forgotten' kingdom in northeastern Faerûn, located along the Easting Reach of the Sea of Fallen Stars. It is known for its strong defensive stance, human-dominated cities, and history of trade, acting as a crucial link between dwarven mountain nations and the inland sea.",
-        url: "world2.html"
+        name: "Lyrabar",
+        lore: "Lyrabar is a major, long-stretching coastal port city in the nation of Impiltur, located along the northern coast of the Sea of Fallen Stars. Known as a key trade hub with a strong navy, it serves as the capital of Impiltur. The city is famous for its maritime trade, the Towers of the Wind wizard school, and its historical role in establishing the kingdom.",
+       url: "location1.html"
     }
 };
 
