@@ -31,11 +31,14 @@ header {
 
 svg {
     width: 100%;
+    height: auto;
     display: block;
     background: url('images/Faerun_1e.webp');
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     border-radius: 12px;
-    filter: grayscale(80%) contrast(1.2) brightness(0.95);
+    filter: grayscale(90%) contrast(1.2) brightness(0.95);
 }
 
 .region {
@@ -72,6 +75,14 @@ svg {
     cursor: pointer;
     color: #aaa;
 }
+
+.map-container {
+    width: 90%;
+    margin: 0 auto 50px auto;
+    position: relative;
+    overflow: visible;
+}
+
 </style>
 </head>
 
@@ -91,7 +102,7 @@ svg {
 
 <svg viewBox="0 0 1000 600">
     <circle class="region" id="region1"
-        cx="795" cy="275" r="65"
+        cx="723" cy="225" r="53"
         fill="rgba(255,255,0,0.25)"
         stroke="yellow"
         stroke-width="2" />
