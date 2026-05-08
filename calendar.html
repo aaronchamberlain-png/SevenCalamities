@@ -11,7 +11,7 @@
 <style>
 
 /* =========================================
-   CALENDAR LAYOUT FIXES
+   CALENDAR LAYOUT
 ========================================= */
 
 .calendar {
@@ -41,11 +41,10 @@
     margin: 0;
 }
 
-/* Remove horizontal scrolling entirely */
+/* Calendar wrapper */
 
 .calendar-wrapper {
     width: 100%;
-    overflow: hidden;
 }
 
 /* TRUE 10-DAY GRID */
@@ -67,8 +66,9 @@
     border-radius: 8px;
     cursor: pointer;
     transition: 0.2s ease;
+
     aspect-ratio: 1 / 1;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -76,6 +76,7 @@
 
     font-size: clamp(0.45rem, 1.8vw, 1rem);
     padding: 2px;
+
     overflow: hidden;
     word-break: break-word;
 }
@@ -153,31 +154,57 @@
 
 @media (max-width: 768px) {
 
+    .container {
+        padding-left: 2px;
+        padding-right: 2px;
+        max-width: 100%;
+    }
+
     .calendar {
-        padding-left: 6px;
-        padding-right: 6px;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+    }
+
+    .calendar-wrapper {
+        width: 100%;
+        overflow: visible;
     }
 
     .grid {
-        gap: 2px;
+
+        gap: 1px;
+
+        /* Scale down entire calendar */
+        transform: scale(0.92);
+        transform-origin: top left;
+
+        /* Compensate for scale shrink */
+        width: 108.5%;
     }
 
     .day,
     .event-day {
-        font-size: clamp(0.4rem, 1.7vw, 0.7rem);
-        padding: 1px;
+        font-size: 0.5rem;
+        padding: 0;
     }
 
     .moon {
-        font-size: 0.6em;
-    }
-
-    .month-title {
-        font-size: 1.2rem;
+        font-size: 0.55em;
     }
 
     .festival {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
+        padding: 4px;
+    }
+
+    .month-title {
+        font-size: 1.1rem;
+    }
+
+    button {
+        padding: 4px 8px;
+        font-size: 0.8rem;
     }
 }
 
@@ -194,7 +221,9 @@
 
 <!-- NAVBAR -->
 <div id="navbar"></div>
+
 <div class="calendar">
+
 <!-- CALENDAR HEADER -->
 <div class="header mt-4">
   <button onclick="prevMonth()">◀</button>
@@ -231,6 +260,7 @@
 
 </div>
 </div>
+
 <!-- MODAL -->
 <div class="modal fade" id="eventModal" tabindex="-1">
   <div class="modal-dialog">
