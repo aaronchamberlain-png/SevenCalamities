@@ -4,16 +4,30 @@ body {
 	font-family: 'Georgia', serif;
 }
 
+/* =========================
+   BANNER
+========================= */
+
 .banner {
-  width: 100%;
-  height: 150px;
-  background-image: url("images/banner.png");
-  background-repeat: repeat-x;
-  background-size: auto 50px;
+	width: 100%;
+	height: 150px;
+	background-image: url("images/banner.png");
+	background-repeat: repeat-x;
+	background-size: auto 50px;
+	object-fit: cover;
+	display: block;
 }
+
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar {
 	background-color: #1f1f1f;
+}
+
+.navbar-brand {
+	color: #f5f5f5 !important;
 }
 
 .nav-link {
@@ -25,6 +39,40 @@ body {
 	color: #d4af37 !important;
 }
 
+/* Mobile navbar button */
+
+.navbar-toggler {
+	border: 2px solid #d4af37;
+	background-color: #1f1f1f;
+	padding: 6px 10px;
+	border-radius: 8px;
+	transition: all 0.2s ease-in-out;
+}
+
+/* Gold hamburger icon */
+
+.navbar-toggler-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(212,175,55, 0.95)' stroke-width='2.5' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Hover glow */
+
+.navbar-toggler:hover {
+	background-color: #2a2a2a;
+	box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+	transform: scale(1.05);
+}
+
+/* Remove Bootstrap blue outline */
+
+.navbar-toggler:focus {
+	box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
+/* =========================
+   GENERAL CONTENT
+========================= */
+
 .content {
 	padding: 40px;
 }
@@ -34,29 +82,13 @@ body {
 	margin-bottom: 20px;
 }
 
-.npc-card {
-  background-color: #1f1f1f;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 30px;
+.small-text {
+	color: #cccccc;
 }
 
-.npc-title {
-  color: #ffd700;
-  margin-bottom: 10px;
-}
-
-.npc-subtitle {
-  color: #bbbbbb;
-  margin-bottom: 15px;
-}
-
-.npc-img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 10px;
-}
+/* =========================
+   CARDS
+========================= */
 
 .card {
 	background-color: #1f1f1f;
@@ -64,99 +96,335 @@ body {
 	border-radius: 10px;
 }
 
-.small-text {
-	color: #cccccc; /* fix low contrast text */
+.npc-card {
+	background-color: #1f1f1f;
+	border-radius: 12px;
+	padding: 20px;
+	margin-bottom: 30px;
 }
 
-.navbar-toggler {
-    border: 2px solid #d4af37;
-    background-color: #1f1f1f;
-    padding: 6px 10px;
-    border-radius: 8px;
-    transition: all 0.2s ease-in-out;
+.npc-title {
+	color: #ffd700;
+	margin-bottom: 10px;
 }
 
-/* Makes the hamburger icon gold instead of Bootstrap gray */
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(212,175,55, 0.95)' stroke-width='2.5' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+.npc-subtitle {
+	color: #bbbbbb;
+	margin-bottom: 15px;
 }
 
-/* Hover glow effect */
-.navbar-toggler:hover {
-    background-color: #2a2a2a;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-    transform: scale(1.05);
+.npc-img {
+	width: 100%;
+	height: 250px;
+	object-fit: cover;
+	border-radius: 10px;
 }
 
-/* Removes Bootstrap blue outline */
-.navbar-toggler:focus {
-    box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
-}
+/* =========================
+   STORY / ACCORDION
+========================= */
 
 .story-title {
-  color: #ffd700;
-  margin-bottom: 20px;
+	color: #ffd700;
+	margin-bottom: 20px;
 }
 
 .session-header {
-  background-color: #1f1f1f;
-  color: #ffd700;
-}
-
-.accordion-button {
-  background-color: #1f1f1f;
-  color: #f5f5f5;
-}
-
-.accordion-button:not(.collapsed) {
-  background-color: #2a2a2a;
-  color: #ffd700;
-}
-
-.accordion-body {
-  background-color: #181818;
-  color: #e0e0e0;
+	background-color: #1f1f1f;
+	color: #ffd700;
 }
 
 .session-meta {
-  font-size: 0.9rem;
-  color: #bbbbbb;
+	font-size: 0.9rem;
+	color: #bbbbbb;
 }
 
+.accordion-button {
+	background-color: #1f1f1f;
+	color: #f5f5f5;
+}
+
+.accordion-button:not(.collapsed) {
+	background-color: #2a2a2a;
+	color: #ffd700;
+}
+
+.accordion-button:focus {
+	box-shadow: none;
+	border-color: #444;
+}
+
+.accordion-item {
+	background-color: #1f1f1f;
+	border: 1px solid #333;
+}
+
+.accordion-body {
+	background-color: #181818;
+	color: #e0e0e0;
+}
+
+/* Fix Bootstrap arrow visibility */
+
+.accordion-button::after {
+	filter: invert(1);
+}
+
+/* =========================
+   CALAMITIES
+========================= */
+
 .calamity-title {
-  color: #ffd700;
-  margin-bottom: 10px;
+	color: #ffd700;
+	margin-bottom: 10px;
 }
 
 .calamity-subtitle {
-  color: #bbbbbb;
-  margin-bottom: 25px;
-}
-
-.content {
-  padding: 40px;
+	color: #bbbbbb;
+	margin-bottom: 25px;
 }
 
 .calamity-card {
-  background-color: #1f1f1f;
-  border-radius: 12px;
-  padding: 20px;
+	background-color: #1f1f1f;
+	border-radius: 12px;
+	padding: 20px;
 }
 
 .calamity-img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 10px;
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+	border-radius: 10px;
 }
 
 .text-block {
-  padding-left: 20px;
+	padding-left: 20px;
 }
 
-@media (max-width: 768px) {
-  .text-block {
-	padding-left: 0;
+/* =========================
+   CALENDAR
+========================= */
+
+.calendar {
+	max-width: 900px;
+	margin: 30px auto;
+	padding-bottom: 40px;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+}
+
+.month-title {
+	color: #ffd700;
+	text-align: center;
+	margin: 0;
+}
+
+/* Scroll wrapper */
+
+.calendar-wrapper {
+	width: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+	padding-bottom: 10px;
+}
+
+/* Styled scrollbar */
+
+.calendar-wrapper::-webkit-scrollbar {
+	height: 8px;
+}
+
+.calendar-wrapper::-webkit-scrollbar-track {
+	background: #1a1a1a;
+}
+
+.calendar-wrapper::-webkit-scrollbar-thumb {
+	background: #555;
+	border-radius: 4px;
+}
+
+/* Calendar grid */
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(10, minmax(60px, 1fr));
+	gap: 6px;
+	margin-top: 15px;
+	min-width: 650px;
+}
+
+/* Calendar cells */
+
+.day,
+.festival,
+.event-day {
+	padding: 10px;
+	text-align: center;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: 0.2s ease;
+	font-size: 0.95rem;
+}
+
+.day {
+	background: #1f1f1f;
+	position: relative;
+	border: 1px solid #2f2f2f;
+}
+
+.day:hover {
+	background: #2a2a2a;
+}
+
+/* Event days */
+
+.event-day {
+	background: #2a3f5f;
+	border: 1px solid #5aa9ff;
+}
+
+.event-day:hover {
+	background: #365a86;
+}
+
+/* Festivals */
+
+.festival {
+	background: #5a3d00;
+	color: #ffd700;
+	font-weight: bold;
+	border: 1px solid #8a6400;
+}
+
+/* Moon phases */
+
+.moon {
+	font-size: 0.8em;
+	display: block;
+	margin-top: 5px;
+	color: #ccc;
+}
+
+/* Calendar buttons */
+
+button {
+	background: #333;
+	color: white;
+	border: none;
+	padding: 6px 12px;
+	border-radius: 6px;
+	transition: 0.2s ease;
+}
+
+button:hover {
+	background: #555;
+}
+
+/* =========================
+   LEGEND
+========================= */
+
+.legend {
 	margin-top: 20px;
-  }
+	font-size: 0.9em;
+	color: #ccc;
+}
+
+.legend-box {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border-radius: 3px;
+	margin-right: 6px;
+	vertical-align: middle;
+}
+
+.legend-event {
+	background: #2a3f5f;
+	border: 1px solid #5aa9ff;
+}
+
+.legend-festival {
+	background: #5a3d00;
+}
+
+.legend-normal {
+	background: #1f1f1f;
+	border: 1px solid #333;
+}
+
+/* =========================
+   MODALS
+========================= */
+
+.modal-content {
+	background-color: #1f1f1f;
+	color: #f5f5f5;
+	border: 1px solid #444;
+}
+
+.modal-header {
+	border-bottom: 1px solid #333;
+}
+
+.modal-footer {
+	border-top: 1px solid #333;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+	.content {
+		padding: 20px;
+	}
+
+	.text-block {
+		padding-left: 0;
+		margin-top: 20px;
+	}
+
+	.calendar {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	.grid {
+		min-width: 600px;
+		gap: 4px;
+	}
+
+	.day,
+	.event-day,
+	.festival {
+		padding: 6px;
+		font-size: 0.8rem;
+	}
+
+	.moon {
+		font-size: 0.7rem;
+	}
+
+	.month-title {
+		font-size: 1.3rem;
+	}
+
+	button {
+		padding: 5px 10px;
+	}
+
+	.calamity-img {
+		height: 220px;
+	}
+
+	.npc-img {
+		height: 220px;
+	}
 }
