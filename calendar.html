@@ -6,7 +6,183 @@
   <title>Forgotten Realms Calendar</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =========================================
+   CALENDAR LAYOUT FIXES
+========================================= */
+
+.calendar {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding-bottom: 40px;
+}
+
+/* Center navbar correctly on desktop */
+
+.navbar .navbar-nav {
+    margin: 0 auto;
+}
+
+/* Header */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.month-title {
+    color: #ffd700;
+    text-align: center;
+    margin: 0;
+}
+
+/* Remove horizontal scrolling entirely */
+
+.calendar-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* TRUE 10-DAY GRID */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 4px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+/* Calendar cells */
+
+.day,
+.event-day,
+.festival {
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    aspect-ratio: 1 / 1;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: clamp(0.45rem, 1.8vw, 1rem);
+    padding: 2px;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+.day {
+    background: #1f1f1f;
+    border: 1px solid #2f2f2f;
+}
+
+.day:hover {
+    background: #2a2a2a;
+}
+
+.event-day {
+    background: #2a3f5f;
+    border: 1px solid #5aa9ff;
+}
+
+.event-day:hover {
+    background: #365a86;
+}
+
+.festival {
+    background: #5a3d00;
+    color: #ffd700;
+    font-weight: bold;
+    border: 1px solid #8a6400;
+
+    aspect-ratio: auto;
+    padding: 10px;
+}
+
+/* Moon phase */
+
+.moon {
+    font-size: 0.75em;
+    margin-top: 2px;
+    line-height: 1;
+}
+
+/* Legend */
+
+.legend {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.legend-box {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.legend-event {
+    background: #2a3f5f;
+    border: 1px solid #5aa9ff;
+}
+
+.legend-festival {
+    background: #5a3d00;
+}
+
+.legend-normal {
+    background: #1f1f1f;
+    border: 1px solid #333;
+}
+
+/* =========================================
+   MOBILE FIXES
+========================================= */
+
+@media (max-width: 768px) {
+
+    .calendar {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .grid {
+        gap: 2px;
+    }
+
+    .day,
+    .event-day {
+        font-size: clamp(0.4rem, 1.7vw, 0.7rem);
+        padding: 1px;
+    }
+
+    .moon {
+        font-size: 0.6em;
+    }
+
+    .month-title {
+        font-size: 1.2rem;
+    }
+
+    .festival {
+        font-size: 0.7rem;
+    }
+}
+
+</style>
+
 </head>
 
 <body>
@@ -26,7 +202,7 @@
   <button onclick="nextMonth()">▶</button>
 </div>
 
-<!-- RESPONSIVE CALENDAR WRAPPER -->
+<!-- CALENDAR -->
 <div class="calendar-wrapper">
   <div class="grid" id="calendarGrid"></div>
 </div>
@@ -35,15 +211,18 @@
 <div class="legend">
 
   <p>
-    <span class="legend-box legend-normal"></span> Normal Day
+    <span class="legend-box legend-normal"></span>
+    Normal Day
   </p>
 
   <p>
-    <span class="legend-box legend-event"></span> Event Day (Session / Story Event)
+    <span class="legend-box legend-event"></span>
+    Event Day (Session / Story Event)
   </p>
 
   <p>
-    <span class="legend-box legend-festival"></span> Festival Day — Special days between months
+    <span class="legend-box legend-festival"></span>
+    Festival Day — Special days between months
   </p>
 
   <p>🌑 New | 🌓 Quarter | 🌕 Full | 🌗 Last Quarter</p>
@@ -56,16 +235,25 @@
 <div class="modal fade" id="eventModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content bg-dark text-light">
+
       <div class="modal-header">
         <h5 class="modal-title" id="modalTitle"></h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal">
+        </button>
       </div>
+
       <div class="modal-body" id="modalBody"></div>
+
     </div>
   </div>
 </div>
 
 <script>
+
 const months = [
   "Hammer","Alturiak","Ches","Tarsakh","Mirtul","Kythorn",
   "Flamerule","Eleasis","Eleint","Marpenoth","Uktar","Nightal"
@@ -88,14 +276,17 @@ const events = {
 let currentMonth = 0;
 
 function getMoonPhase(day) {
+
   if (day % 30 === 0) return "🌑";
   if (day % 15 === 0) return "🌕";
   if (day % 7 === 0) return "🌓";
   if (day % 22 === 0) return "🌗";
+
   return "";
 }
 
 function openEvent(month, day) {
+
   const key = month + "-" + day;
 
   document.getElementById("modalTitle").innerText =
@@ -123,15 +314,12 @@ function renderCalendar() {
   for (let i = 1; i <= 30; i++) {
 
     const key = monthName + "-" + i;
+
     const hasEvent = events[key];
 
     const day = document.createElement("div");
 
-    if (hasEvent) {
-      day.className = "event-day";
-    } else {
-      day.className = "day";
-    }
+    day.className = hasEvent ? "event-day" : "day";
 
     day.innerHTML =
       i + `<span class='moon'>${getMoonPhase(i)}</span>`;
@@ -165,6 +353,7 @@ function prevMonth() {
 }
 
 renderCalendar();
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
