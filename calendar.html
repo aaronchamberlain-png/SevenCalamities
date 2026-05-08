@@ -11,30 +11,65 @@
 <style>
 
 /* ================================
-   LAYOUT FIX (IMPORTANT PART)
+   GLOBAL SAFETY RULE
 ================================ */
 
-/* container */
+body {
+    overflow-x: hidden;
+}
+
+/* ================================
+   LAYOUT
+================================ */
+
 .calendar {
     max-width: 1000px;
     margin: 30px auto;
     padding-bottom: 40px;
 }
 
-/* FIXED: prevents grid overflow on mobile */
-.calendar-wrapper {
-    width: 100%;
-    overflow: hidden;
+/* Navbar centering fix */
+.navbar .navbar-nav {
+    margin: 0 auto;
 }
 
-/* CRITICAL FIX:
-   minmax(0, 1fr) prevents forced overflow */
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.month-title {
+    color: #ffd700;
+    margin: 0;
+    text-align: center;
+}
+
+/* ================================
+   CALENDAR SCROLL FIX (KEY FIX)
+================================ */
+
+.calendar-wrapper {
+    width: 100%;
+    overflow-x: auto;        /* only calendar scrolls */
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ================================
+   GRID (FORCES 10 DAYS)
+================================ */
+
 .grid {
     display: grid;
-    grid-template-columns: repeat(10, minmax(0, 1fr));
+    grid-template-columns: repeat(10, minmax(70px, 1fr));
     gap: 4px;
     margin-top: 15px;
-    width: 100%;
+
+    /* ensures scrolling instead of clipping */
+    min-width: 700px;
 }
 
 /* ================================
@@ -54,10 +89,6 @@
     align-items: center;
 
     aspect-ratio: 1 / 1;
-
-    /* CRITICAL FIX: allow shrinking */
-    min-width: 0;
-    min-height: 0;
 
     font-size: clamp(0.45rem, 1.6vw, 0.95rem);
     padding: 2px;
@@ -83,7 +114,7 @@
     background: #365a86;
 }
 
-/* Festival spans full row */
+/* Festival row */
 .festival {
     grid-column: span 10;
     background: #5a3d00;
@@ -119,13 +150,14 @@
 }
 
 /* ================================
-   MOBILE TUNING (NO SCROLL)
+   MOBILE TUNING
 ================================ */
 
 @media (max-width: 768px) {
 
     .grid {
         gap: 2px;
+        min-width: 650px; /* keeps structure stable */
     }
 
     .day,
@@ -136,6 +168,10 @@
 
     .moon {
         font-size: 0.6rem;
+    }
+
+    .month-title {
+        font-size: 1.2rem;
     }
 }
 
@@ -162,7 +198,7 @@
   <button onclick="nextMonth()">▶</button>
 </div>
 
-<!-- GRID -->
+<!-- CALENDAR -->
 <div class="calendar-wrapper">
   <div class="grid" id="calendarGrid"></div>
 </div>
@@ -266,6 +302,7 @@ function renderCalendar() {
   }
 
   if (festivals[currentMonth]) {
+
     const fest = festivals[currentMonth];
 
     const div = document.createElement("div");
