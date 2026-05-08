@@ -11,16 +11,7 @@
 <style>
 
 /* =========================================
-   GLOBAL OVERFLOW FIX (CRITICAL)
-========================================= */
-
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-/* =========================================
-   CALENDAR LAYOUT
+   CALENDAR LAYOUT FIXES
 ========================================= */
 
 .calendar {
@@ -48,28 +39,25 @@ html, body {
     margin: 0;
 }
 
-/* Wrapper */
+/* No horizontal scroll */
 .calendar-wrapper {
     width: 100%;
+    overflow: hidden;
 }
 
-/* =========================================
-   10-DAY GRID (FIXED)
-========================================= */
-
+/* TRUE 10-DAY GRID */
 .grid {
     display: grid;
-    grid-template-columns: repeat(10, minmax(0, 1fr));
+    grid-template-columns: repeat(10, 1fr);
     gap: 4px;
     margin-top: 15px;
     width: 100%;
 }
 
-/* Prevent grid children from forcing overflow */
+/* Calendar cells */
 .day,
 .event-day,
 .festival {
-    min-width: 0;
     text-align: center;
     border-radius: 8px;
     cursor: pointer;
@@ -84,11 +72,9 @@ html, body {
 
     font-size: clamp(0.45rem, 1.8vw, 1rem);
     padding: 2px;
-
     overflow: hidden;
 }
 
-/* Normal day */
 .day {
     background: #1f1f1f;
     border: 1px solid #2f2f2f;
@@ -98,7 +84,6 @@ html, body {
     background: #2a2a2a;
 }
 
-/* Event day */
 .event-day {
     background: #2a3f5f;
     border: 1px solid #5aa9ff;
@@ -108,28 +93,22 @@ html, body {
     background: #365a86;
 }
 
-/* Festival row */
 .festival {
     background: #5a3d00;
     color: #ffd700;
     font-weight: bold;
     border: 1px solid #8a6400;
-
     aspect-ratio: auto;
     padding: 10px;
 }
 
-/* Moon phase */
+/* Moon */
 .moon {
     font-size: 0.75em;
     margin-top: 2px;
-    line-height: 1;
 }
 
-/* =========================================
-   LEGEND
-========================================= */
-
+/* Legend */
 .legend {
     margin-top: 20px;
     font-size: 0.9em;
@@ -145,58 +124,9 @@ html, body {
     vertical-align: middle;
 }
 
-.legend-event {
-    background: #2a3f5f;
-    border: 1px solid #5aa9ff;
-}
-
-.legend-festival {
-    background: #5a3d00;
-}
-
-.legend-normal {
-    background: #1f1f1f;
-    border: 1px solid #333;
-}
-
-/* =========================================
-   MOBILE FIXES (FINAL)
-========================================= */
-
-@media (max-width: 768px) {
-
-    .calendar {
-        width: 100%;
-        max-width: 100%;
-        padding-left: 4px;
-        padding-right: 4px;
-    }
-
-    .grid {
-        gap: 2px;
-        grid-template-columns: repeat(10, minmax(0, 1fr));
-    }
-
-    .day,
-    .event-day,
-    .festival {
-        font-size: 0.5rem;
-        padding: 1px;
-    }
-
-    .moon {
-        font-size: 0.6em;
-    }
-
-    .month-title {
-        font-size: 1.2rem;
-    }
-
-    button {
-        padding: 4px 8px;
-        font-size: 0.8rem;
-    }
-}
+.legend-event { background: #2a3f5f; border: 1px solid #5aa9ff; }
+.legend-festival { background: #5a3d00; }
+.legend-normal { background: #1f1f1f; border: 1px solid #333; }
 
 </style>
 
@@ -221,7 +151,7 @@ html, body {
   <button onclick="nextMonth()">▶</button>
 </div>
 
-<!-- CALENDAR -->
+<!-- GRID -->
 <div class="calendar-wrapper">
   <div class="grid" id="calendarGrid"></div>
 </div>
@@ -230,9 +160,8 @@ html, body {
 <div class="legend">
 
   <p><span class="legend-box legend-normal"></span> Normal Day</p>
-  <p><span class="legend-box legend-event"></span> Event Day (Session / Story Event)</p>
-  <p><span class="legend-box legend-festival"></span> Festival Day — Special days between months</p>
-  <p>🌑 New | 🌓 Quarter | 🌕 Full | 🌗 Last Quarter</p>
+  <p><span class="legend-box legend-event"></span> Event Day</p>
+  <p><span class="legend-box legend-festival"></span> Festival Day</p>
 
 </div>
 
@@ -246,7 +175,6 @@ html, body {
 
       <div class="modal-header">
         <h5 class="modal-title" id="modalTitle"></h5>
-
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
 
@@ -257,17 +185,33 @@ html, body {
 </div>
 
 <script>
+
 const months = [
   "Hammer","Alturiak","Ches","Tarsakh","Mirtul","Kythorn",
   "Flamerule","Eleasis","Eleint","Marpenoth","Uktar","Nightal"
 ];
 
 const festivals = {
-  0: "Midwinter",
-  2: "Greengrass",
-  5: "Midsummer",
-  7: "Highharvestide",
-  8: "Feast of the Moon"
+  0: {
+    name: "Midwinter",
+    note: "A sacred winter festival of survival, feasts, and renewal rituals."
+  },
+  2: {
+    name: "Greengrass",
+    note: "A celebration of renewal where fields are blessed and nature awakens."
+  },
+  5: {
+    name: "Midsummer",
+    note: "The peak of magic and warmth, marked by bonfires and revelry."
+  },
+  7: {
+    name: "Highharvestide",
+    note: "A harvest festival honoring abundance and trade."
+  },
+  8: {
+    name: "Feast of the Moon",
+    note: "A solemn night honoring ancestors and the dead."
+  }
 };
 
 const events = {
@@ -287,6 +231,7 @@ function getMoonPhase(day) {
 }
 
 function openEvent(month, day) {
+
   const key = month + "-" + day;
 
   document.getElementById("modalTitle").innerText =
@@ -295,9 +240,18 @@ function openEvent(month, day) {
   document.getElementById("modalBody").innerText =
     events[key] || "No events recorded... yet.";
 
-  new bootstrap.Modal(
-    document.getElementById('eventModal')
-  ).show();
+  new bootstrap.Modal(document.getElementById('eventModal')).show();
+}
+
+function openFestival(festival) {
+
+  document.getElementById("modalTitle").innerText =
+    festival.name;
+
+  document.getElementById("modalBody").innerText =
+    festival.note;
+
+  new bootstrap.Modal(document.getElementById('eventModal')).show();
 }
 
 function renderCalendar() {
@@ -316,20 +270,30 @@ function renderCalendar() {
     const hasEvent = events[key];
 
     const day = document.createElement("div");
+
     day.className = hasEvent ? "event-day" : "day";
 
-    day.innerHTML = i + `<span class='moon'>${getMoonPhase(i)}</span>`;
+    day.innerHTML =
+      i + `<span class='moon'>${getMoonPhase(i)}</span>`;
+
     day.onclick = () => openEvent(monthName, i);
 
     grid.appendChild(day);
   }
 
   if (festivals[currentMonth]) {
-    const fest = document.createElement("div");
-    fest.className = "festival";
-    fest.style.gridColumn = "span 10";
-    fest.innerText = festivals[currentMonth];
-    grid.appendChild(fest);
+
+    const fest = festivals[currentMonth];
+
+    const festDiv = document.createElement("div");
+    festDiv.className = "festival";
+    festDiv.style.gridColumn = "span 10";
+
+    festDiv.innerText = fest.name;
+
+    festDiv.onclick = () => openFestival(fest);
+
+    grid.appendChild(festDiv);
   }
 }
 
@@ -344,13 +308,14 @@ function prevMonth() {
 }
 
 renderCalendar();
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 fetch("navbar.html")
-  .then(response => response.text())
+  .then(r => r.text())
   .then(data => {
     document.getElementById("navbar").innerHTML = data;
   });
