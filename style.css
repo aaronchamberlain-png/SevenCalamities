@@ -122,10 +122,11 @@ em {
 }
 
 .npc-img {
-	width: 100%;
-	
-	object-fit: cover;
-	border-radius: 10px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
 }
 
 /* =========================
