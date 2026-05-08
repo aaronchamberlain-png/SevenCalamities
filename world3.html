@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Interactive Impiltur Map</title>
+<title>Interactive Faerûn Map</title>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
 
 <style>
 body {
@@ -30,15 +33,11 @@ svg {
     width: 100%;
     height: auto;
     display: block;
-    margin: 0 auto;
-
+    background: url('images/impiltur_map_zoomed_in.png');
+    background-size: cover;
     border-radius: 12px;
-
-    /* IMPORTANT: prevents clipping of rounded corners */
-    overflow: hidden;
+    filter: grayscale(80%) contrast(1.2) brightness(0.95);
 }
-
-/* Background image INSIDE SVG is now handled by <image>, not CSS */
 
 .region {
     cursor: pointer;
@@ -74,34 +73,26 @@ svg {
     cursor: pointer;
     color: #aaa;
 }
-
 </style>
-	<link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- Banner Image -->
-    <img src="images/banner.png" alt="The Seven Calamities Banner" class="banner">
 
-<!-- Navigation Bar -->
+<body>
+
+<!-- Banner -->
+<img src="images/banner.png" alt="The Seven Calamities Banner" class="banner">
+
+<!-- Navigation -->
 <div id="navbar"></div>
 
 <header>
-    <h1>Interactive Faerûn Map</h1>
+    <h1 class="text-center section-title">Interactive Faerûn Map</h1>
 </header>
 
 <div class="map-container">
 
-<svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
-
-    <!-- FIX: proper full-image rendering without cropping -->
-    <image href="images/impiltur_map_zoomed_in.png"
-           x="0" y="0"
-           width="1000" height="600"
-           preserveAspectRatio="xMidYMid meet" />
-
+<svg viewBox="0 0 1000 600">
     <circle class="region" id="region1" cx="525" cy="375" r="45"
             fill="rgba(255,0,255,0.25)" stroke="magenta" stroke-width="2" />
-
 </svg>
 
 <div class="popup" id="popup">
@@ -116,6 +107,8 @@ svg {
 const popup = document.getElementById("popup");
 const title = document.getElementById("popup-title");
 const text = document.getElementById("popup-text");
+
+let activeRegion = null;
 
 const regions = {
     region1: {
@@ -146,8 +139,8 @@ function showPopup(e, region) {
         top = e.clientY - rect.height - margin;
     }
 
-    left = Math.max(0, left);
-    top = Math.max(0, top);
+    left = Math.max(10, left);
+    top = Math.max(10, top);
 
     popup.style.left = left + "px";
     popup.style.top = top + "px";
@@ -155,20 +148,57 @@ function showPopup(e, region) {
 
 function closePopup() {
     popup.style.display = "none";
+    activeRegion = null;
 }
 
 Object.keys(regions).forEach(id => {
+
     const el = document.getElementById(id);
     const region = regions[id];
 
     if (!el) return;
 
-    el.addEventListener("mousemove", (e) => showPopup(e, region));
-    el.addEventListener("mouseleave", closePopup);
-
-    el.addEventListener("click", () => {
-        window.location.href = region.url;
+    // Desktop hover
+    el.addEventListener("mousemove", (e) => {
+        if ('ontouchstart' in window) return;
+        showPopup(e, region);
     });
+
+    el.addEventListener("mouseleave", () => {
+        if ('ontouchstart' in window) return;
+        closePopup();
+    });
+
+    // Click / touch behavior
+    el.addEventListener("click", (e) => {
+
+        // TOUCH DEVICES: tap-to-preview, second tap to navigate
+        if ('ontouchstart' in window) {
+
+            if (activeRegion !== id) {
+                e.preventDefault();
+                activeRegion = id;
+                showPopup(e, region);
+                return;
+            }
+
+            window.location.href = region.url;
+        }
+
+        // DESKTOP: direct navigation
+        else {
+            window.location.href = region.url;
+        }
+    });
+});
+
+// tap outside closes popup (mobile usability)
+document.addEventListener("click", function(e) {
+    const clickedRegion = e.target.closest(".region");
+
+    if (!clickedRegion) {
+        closePopup();
+    }
 });
 </script>
 
@@ -179,6 +209,8 @@ fetch("navbar.html")
     document.getElementById("navbar").innerHTML = data;
   });
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
