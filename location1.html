@@ -1,37 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Seven Calamities</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lyrabar</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-	<link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- Banner Image -->
-    <img src="images/banner.png" alt="The Seven Calamities Banner" class="banner">
+<!-- Banner -->
+<img src="images/banner.png" class="banner" alt="banner">
 
-	<!-- Navigation Bar -->
-	<div id="navbar"></div>
+<!-- Navbar -->
+<div id="navbar"></div>
 
-    <!-- Main Content -->
-    <div class="content">
-        <h1 class="text-center section-title">Lyrabar</h1>
+<div class="container content">
 
-    </div>
+<h1 class="text-center section-title">Lyrabar</h1>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script>
-	fetch("navbar.html")
-	  .then(response => response.text())
-	  .then(data => {
-		document.getElementById("navbar").innerHTML = data;
-	  });
-	</script>
+<div class="col-sm-12">
+	<p>
+		Clinging to the rugged cliffs of the northern shore, the city of <strong>Lyrabar</strong> stretches nearly a mile along the sheer rock face, its stonework seamlessly woven into the natural contours of the precipice. Carved balconies, winding staircases, and bridges of weathered iron span the vertical layers of the city, linking the distinct districts that cling to the rock like barnacles to a ship’s hull. At the highest point in the <strong>Noble District</strong>, the <strong>Citadel of the Stalwart King</strong> looms — a fortress of light granite, reinforced with steel beams drilled deep into the stone. Home to the city’s ruling elite and standing guard against both land and sea threats, the citadel bristles with watchtowers and ballistae aimed at the horizon. Below, the <strong>Market District</strong> spills across terraces carved into the cliffside, bursting with vibrant stalls shaded by colorful awnings. Traders hawk salt-cured fish, enchanted trinkets, and exotic wares brought in by sea merchants. Rope lifts and pulley systems creak under the weight of goods being ferried up and down the rock face, ensuring that even the heights of Vareth-Kai remain well supplied.
+	</p>
+	<p>
+		At the base of the cliff, the <strong>Docks District</strong> extends onto wooden piers and stone jetties reinforced against the tide. Shipbuilders and fishermen work alongside smugglers and mercenaries, their livelihoods dictated by the whims of the sea. Tunnels and hidden caves offer passage between the lower docks and the upper city, some officially sanctioned, others known only to those who deal in the shadows. Further up, perched upon a ledge of smooth white stone, stands the <strong>Clergy District</strong>, where the <strong>Temple of the Synod</strong> casts its watchful gaze over the waves. The temple’s domed sanctuaries and towering spires are carved directly from the cliff, dedicated to gods of the sea, storms, and fate. Priests and acolytes tend to the spiritual needs of sailors and rulers alike, their chants often lost to the crashing surf below. Though Lyrabar is narrow and precariously built, its people are as resilient as the rock they call home, thriving in the balance between land, sea, and sky.
+	</p>
+</div>
+
+<div class="row mt-4">
+
+<!-- LEFT SIDE -->
+<div class="col-md-4">
+
+<div class="accordion" id="quarterAccordion">
+
+<!-- ================= NOBLE ================= -->
+<div class="accordion-item">
+<h2 class="accordion-header">
+<button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#noble">
+Noble Quarter
+</button>
+</h2>
+
+<div id="noble" class="accordion-collapse collapse show" data-bs-parent="#quarterAccordion">
+<div class="accordion-body small-text">
+
+<div class="accordion">
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Citadel of the Stalwart King','Royal seat of power and governance.')">
+Citadel of the Stalwart King
+</button>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('High Council Hall','Where noble decisions are made.')">
+High Council Hall
+</button>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Silver Gardens','Enchanted noble gardens.')">
+Silver Gardens
+</button>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Moonspire Tower','Arcane observatory of Lyrabar.')">
+Moonspire Tower
+</button>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ================= MARKET ================= -->
+<div class="accordion-item">
+<h2 class="accordion-header">
+<button class="accordion-button collapsed"
+data-bs-toggle="collapse" data-bs-target="#market"
+onclick="setQuarter('Market Quarter',
+'Bustling trade hub filled with merchants.',
+'Exotic goods, caravans, and endless bargaining.')">
+Market Quarter
+</button>
+</h2>
+
+<div id="market" class="accordion-collapse collapse" data-bs-parent="#quarterAccordion">
+<div class="accordion-body small-text">
+
+<div class="accordion">
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Golden Bazaar','Central marketplace of Lyrabar.')">
+Golden Bazaar
+</button>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Silk Road Exchange','Luxury trade hall.')">
+Silk Road Exchange
+</button>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Coinspire Bank','Financial institution of merchants.')">
+Coinspire Bank
+</button>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Spice Street','Food and spice district.')">
+Spice Street
+</button>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ================= DOCKS ================= -->
+<div class="accordion-item">
+<h2 class="accordion-header">
+<button class="accordion-button collapsed"
+data-bs-toggle="collapse" data-bs-target="#docks"
+onclick="setQuarter('Docks Quarter',
+'Harbor district of ships and sailors.',
+'Salt, tar, trade winds, and constant movement.')">
+Docks Quarter
+</button>
+</h2>
+
+<div id="docks" class="accordion-collapse collapse" data-bs-parent="#quarterAccordion">
+<div class="accordion-body small-text">
+
+<div class="accordion">
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Stormwake Wharf','Main shipping dock.')">
+Stormwake Wharf
+</button>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Bluefin Tavern','Popular sailor’s tavern.')">
+Bluefin Tavern
+</button>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Harbormaster Office','Controls all shipping activity.')">
+Harbormaster Office
+</button>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Saltwind Shipyard','Ship construction and repair.')">
+Saltwind Shipyard
+</button>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ================= CLERGY ================= -->
+<div class="accordion-item">
+<h2 class="accordion-header">
+<button class="accordion-button collapsed"
+data-bs-toggle="collapse" data-bs-target="#clergy"
+onclick="setQuarter('Clergy Quarter',
+'Divine heart of the city.',
+'Priests and acolytes tend to the spiritual needs of sailors and rulers alike.')">
+Clergy Quarter
+</button>
+</h2>
+
+<div id="clergy" class="accordion-collapse collapse" data-bs-parent="#quarterAccordion">
+<div class="accordion-body small-text">
+
+<div class="accordion">
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Ironforge Foundry','Primary metalworking forge.')">
+Temple of the Synod
+</button>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Bricklayer District','Housing for laborers.')">
+Bricklayer District
+</button>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Timber Yard','Processing and lumber trade.')">
+Timber Yard
+</button>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-button collapsed"
+onclick="showBuilding('Stonecutters Hall','Guild of masons and builders.')">
+Stonecutters Hall
+</button>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="col-md-8">
+
+<img id="cityImage" src="images/noble.jpg" class="npc-img mb-3">
+
+<div class="npc-card">
+<h3 id="quarterTitle" class="npc-title">Noble Quarter</h3>
+<p id="quarterDesc1" class="npc-subtitle">
+A refined district of nobility and political influence.
+</p>
+<p id="quarterDesc2" class="small-text">
+Seat of governance and royal estates of Lyrabar.
+</p>
+</div>
+
+<div class="npc-card mt-3" id="buildingCard" style="display:none;">
+<h4 id="buildingTitle" class="npc-title"></h4>
+<p id="buildingDesc" class="small-text"></p>
+</div>
+
+</div>
+</div>
+</div>
+
+<script>
+function setQuarter(title, desc1, desc2) {
+    document.getElementById("quarterTitle").innerText = title;
+    document.getElementById("quarterDesc1").innerText = desc1;
+    document.getElementById("quarterDesc2").innerText = desc2;
+
+    document.getElementById("buildingCard").style.display = "none";
+}
+
+function showBuilding(name, desc) {
+    document.getElementById("buildingTitle").innerText = name;
+    document.getElementById("buildingDesc").innerText = desc;
+    document.getElementById("buildingCard").style.display = "block";
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+fetch("navbar.html")
+  .then(r => r.text())
+  .then(d => document.getElementById("navbar").innerHTML = d);
+</script>
+
 </body>
 </html>

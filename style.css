@@ -4,6 +4,14 @@ body {
 	font-family: 'Georgia', serif;
 }
 
+strong {
+	color: #ffd166;
+}
+
+em {
+	color: #ccc;
+}
+
 /* =========================
    BANNER
 ========================= */
@@ -115,7 +123,7 @@ body {
 
 .npc-img {
 	width: 100%;
-	height: 250px;
+	
 	object-fit: cover;
 	border-radius: 10px;
 }
