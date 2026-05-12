@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--  NPCs of the Western Forest and Northern Hills -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NPCs - King's Lands</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Banner -->
+<img src="images/banner.png" class="banner" alt="Banner">
+
+<div id="navbar"></div>
+
+<!-- Content -->
+<div class="container content">
+
+  <h1 class="text-center npc-title mb-5">Notable NPCs of the King's Lands</h1>
+
+  <!-- NPC 1 -->
+  <div class="row npc-card align-items-center">
+    <div class="col-md-4">
+      <img src="images/thane.png" class="npc-img" alt="NPC 1">
+    </div>
+    <div class="col-md-8">
+      <h3 class="npc-title">Captain Wardstone Thane</h3>
+      <h6 class="npc-subtitle">Captain of the Royal Road Guard</h6>
+      <p>Captain Wardstone Thane is a black dragonborn whose presence alone tends to quiet a road. Scaled in deep obsidian tones that catch little light even under the sun, he cuts a disciplined, imposing figure in the livery of the Royal Road patrols of Lyrabar. His armor is practical rather than ceremonial—silvered steel reinforced for mounted travel, polished enough to reflect broken fragments of sky and road as he moves through the ruined countryside, yet still scarred by old encounters with bandits and worse things that once lurked along Impiltur’s highways. A long, ridged helm leaves his draconic snout visible, and the twin crests of his horns are wrapped in faded leather strips marking years of service. Though his voice carries the gravelly depth common to his kind, it is measured and deliberate, more accustomed to issuing calm orders than threats. Before the earth-shattering disaster, Wardstone was known as a steady hand on the Royal Road, commanding his company of twenty horse-riders with a rare balance of discipline and restraint—enforcing law without cruelty, and offering aid to travelers as often as he delivered justice to criminals.</p>
+
+<p>The earthquake changed everything. In the days following the convulsions that tore across Impiltur, Wardstone’s patrol routes ceased to exist in any meaningful sense. Roads he once knew by heart now split into yawning chasms, and familiar waypoints have become unstable, half-collapsed remnants of stone and memory. Where once his riders pursued thieves and monster spoor, they now escort survivors from collapsing farmland, navigate fractured terrain that shifts without warning, and occasionally vanish into sinkholes that reveal impossible, lightless caverns beneath the world. The captain himself has become something harder and more haunted—a commander trying to maintain order along a road that no longer respects geography. Reports from his company speak of strange disturbances near the ruptured earth: unnatural echoes beneath the ground, lingering sickness in those who approach certain fissures, and a growing sense that the land itself is resisting intrusion. Wardstone has begun to suspect that their duty is no longer merely to patrol the Royal Road, but to hold back something pressing outward from beneath it.</p>
+    </div>
+  </div>
+
+  <!-- NPC 2 -->
+  <div class="row npc-card align-items-center">
+    <div class="col-md-4">
+      <img src="npc2.jpg" class="npc-img" alt="NPC 2">
+    </div>
+    <div class="col-md-8">
+      <h3 class="npc-title">Lyra Moonfall</h3>
+      <h6 class="npc-subtitle">Mystic of the Silver Grove</h6>
+      <p>Placeholder text describing this NPC. Include background, motivations, secrets, and relationship to the party.</p>
+    </div>
+  </div>
+
+  <!-- NPC 3 -->
+  <div class="row npc-card align-items-center">
+    <div class="col-md-4">
+      <img src="npc3.jpg" class="npc-img" alt="NPC 3">
+    </div>
+    <div class="col-md-8">
+      <h3 class="npc-title">Durn Ironfist</h3>
+      <h6 class="npc-subtitle">Dwarven Smith of the Deep Forge</h6>
+      <p>Placeholder text describing this NPC. Include background, motivations, secrets, and relationship to the party.</p>
+    </div>
+  </div>
+
+  <!-- NPC 4 -->
+  <div class="row npc-card align-items-center">
+    <div class="col-md-4">
+      <img src="npc4.jpg" class="npc-img" alt="NPC 4">
+    </div>
+    <div class="col-md-8">
+      <h3 class="npc-title">Selene Vire</h3>
+      <h6 class="npc-subtitle">Agent of the Veiled Hand</h6>
+      <p>Placeholder text describing this NPC. Include background, motivations, secrets, and relationship to the party.</p>
+    </div>
+  </div>
+
+  <!-- NPC 5 -->
+  <div class="row npc-card align-items-center">
+    <div class="col-md-4">
+      <img src="npc5.jpg" class="npc-img" alt="NPC 5">
+    </div>
+    <div class="col-md-8">
+      <h3 class="npc-title">Eldrin Faelar</h3>
+      <h6 class="npc-subtitle">Exiled High Elf Scholar</h6>
+      <p>Placeholder text describing this NPC. Include background, motivations, secrets, and relationship to the party.</p>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+fetch("navbar.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("navbar").innerHTML = data;
+  });
+</script>
+</body>
+</html>
