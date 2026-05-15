@@ -30,6 +30,20 @@ a:active {
     color: #ffd166;
 }
 
+a.menu,
+a.menu:visited {
+    color: #ffd166;      /* same color even after click */
+    text-decoration: none; /* removes underline */
+}
+
+a.menu:hover {
+    color: #ffd166; /* optional hover color */
+}
+
+a.menu:active {
+    color: #ffd166;
+}
+
 /* =========================
    BANNER
 ========================= */
