@@ -102,6 +102,8 @@ svg {
 <svg viewBox="0 0 1000 600">
     <circle class="region" id="region1" cx="525" cy="375" r="45"
             fill="rgba(255,0,255,0.25)" stroke="magenta" stroke-width="2" />
+	<circle class="region" id="region2" cx="522" cy="230" r="45"
+            fill="rgba(18,198,48,0.25)" stroke="green" stroke-width="2" />
 </svg>
 
 <div class="popup" id="popup">
@@ -122,8 +124,14 @@ let activeRegion = null;
 const regions = {
     region1: {
         name: "Lyrabar",
-        lore: "Lyrabar is a major, long-stretching coastal port city in the nation of Impiltur, located along the northern coast of the Sea of Fallen Stars. Known as a key trade hub with a strong navy, it serves as the capital of Impiltur. The city is famous for its maritime trade, the Towers of the Wind wizard school, and its historical role in establishing the kingdom.",
+        lore: "Lyrabar is a major, long-stretching coastal port city and capital of the nation of Impiltur.",
        url: "location1.html"
+    },
+	
+	region2: {
+        name: "West-Over-Farthing",
+        lore: "West-Over-Farthing is a quiet farming village nestled in the rolling fields of Impiltur",
+       url: "location2.html"
     }
 };
 
