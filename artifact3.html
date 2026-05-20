@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beast-Moon Totem</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Banner -->
+<img src="images/banner.png" alt="Banner" class="banner">
+
+<!-- Navigation Bar -->
+<div id="navbar"></div>
+
+<!-- Content -->
+<div class="container content">
+
+    <!-- Character Header -->
+    <div class="text-center">
+        <h1 class="section-title">Beast-Moon Totem</h1>
+        <p class="small-text"><em>Wondrous item, Legendary</em></p>
+    </div>
+
+    <!-- Three Column Layout -->
+    <div class="row mt-4">
+
+        <!-- Left Column: Image -->
+        <div class="col-md-6">
+            <div class="card p-3">
+                <img src="images/beastmoon.png" class="img-fluid rounded" alt="Character Image">
+            </div>
+        </div>
+
+        <!-- Right Column: Story -->
+        <div class="col-md-6">
+            <div class="card p-3 mb-3">
+                <h4 class="section-title">Description</h4>
+                <p class="small-text">The Beast-Moon Totem is a towering idol of blackened wood and antlered bone carved in the shape of a snarling beast with hollow eyes that glow crimson beneath moonlight. Presented to desperate villages as a sacred charm capable of protecting livestock, calming predators, and ensuring prosperous hunts, the totem radiates an aura of unnatural peace within its immediate domain: cattle grow fat, wolves avoid the fields, and game becomes plentiful beneath the eerie glow of a blood-red moon. Yet this blessing is merely the center of a widening curse. Beyond the totem’s influence, animals twist into savage reflections of themselves—horses develop carnivorous instincts, crows gather in calculating flocks, deer stalk travelers with predatory hunger, and entire forests become territories of cunning, monstrous beasts driven by territorial violence. The longer the idol stands, the farther its corruption spreads, until neighboring lands descend into bloodshed and terror while the protected village prospers in guilty comfort beneath the crimson moon.</p>
+            </div>
+
+            <div class="card p-3">
+                <h4 class="section-title">History</h4>
+                <p class="small-text">The Beast-Moon Totem is believed to have originated centuries ago as a sacred hunting idol devoted to Malar, crafted by shamans who sought to honor the brutal balance between predator and prey beneath the moonlit sky. In its original form, the totem was said to encourage healthy game, strengthen hunters, and keep the fury of the wilderness in harmony with nearby settlements. Instead, agents of Beshaba secretly corrupted the idol, twisting its blessings into instruments of disaster. Rather than balancing the wild, the altered totem concentrated safety within a narrow sanctuary while driving savagery outward into the surrounding lands. A servant of Beshaba delivered it to Vulfric the Bold and his wandering minstrel tribe during a season of high predator attacks along the frontier. The agent convinced Vulfric that nearby villagers could be manipulated into purchasing the idol by promising that it would protect their livestock, ensure prosperous hunts, and avert an approaching calamity beneath the coming red moon. Ever eager for coin and acclaim, Vulfric staged elaborate performances and omens to sell the frightened villagers on the relic’s “divine” power. At first the totem appeared miraculous: wolves and other predators vanished from the fields, livestock flourished, and the village prospered. Yet as the blood-red moon rose higher, neighboring lands became infested with monstrous beasts and maddened animals whose growing violence isolated the village from the rest of the region, ensuring that its survival came at the cost of everyone beyond the totem’s cursed protection.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+fetch("navbar.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("navbar").innerHTML = data;
+  });
+</script>
+</body>
+</html>
