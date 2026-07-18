@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haunts of the Macabre</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Banner -->
+<img src="images/banner.png" alt="Banner" class="banner">
+
+<!-- Navigation Bar -->
+<div id="navbar"></div>
+
+<!-- Content -->
+<div class="container content">
+
+    <!-- Character Header -->
+    <div class="text-center">
+        <h1 class="section-title">Haunts of the Macabre</h1>
+        <p class="small-text"><em>Legendary | Pan Pipes (Spellcasting Focus) | Requires Attunement by a Bard</em></p>
+    </div>
+
+    <!-- Two Column Layout -->
+    <div class="row mt-4">
+
+        <!-- Left Column: Image -->
+        <div class="col-md-5">
+            <div class="card p-3">
+                <img src="images/haunts_macabre.png" class="img-fluid rounded" alt="Character Image">
+            </div>
+        </div>
+
+        <!-- Right Column: Stats & Details -->
+        <div class="col-md-7">
+            <div class="card p-3 mb-3">
+                <h5 class="section-title">Powers and Abilities</h5>
+                <ul class="small-text">
+                    <li><p><strong>Macabre Illusions and Nightmarish Realism</strong></p>
+<p>Whenever you cast an Illusion spell that deals damage, increase each damage die by one die (i.e. 1d6 to 2d6).</p>
+<p>The saving throw DC of your Illusion spells and ability checks made to discern its illusory nature increases by one.</p>
+</li>
+                    <li><p><strong>Granted Spell: Phantasmal Flicker.</strong>  While attuned to the pipes, you know the Phantasmal Flicker cantrip. It counts as a bard cantrip for you and does not count against your number of cantrips known.</p>
+</li>
+                    <li><p><strong>Phantasmal Flicker</strong></p>
+<pre><strong>Illusion Cantrip</strong>
+<strong>Casting Time:</strong> 1 action
+<strong>Range:</strong> 60 feet
+<strong>Components:</strong> V
+<strong>Duration:</strong> 1 round
+</pre>
+<p>You momentarily flood the mind of one creature you can see within range with a horrifying phantasm visible only to it—a corpse reaching from beneath the earth, a maw opening in impossible darkness, or another terror drawn from its deepest fears.</p>
+<p>The target must succeed on an Intelligence saving throw or take 1d6 psychic damage and suffer a –2 penalty to AC against the next attack made against it before the end of your next turn.
+At Higher Levels. This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).</p>
+</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+        <!-- History -->
+	<div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card p-3 mb-3">
+                <h4 class="section-title">History</h4>
+                <p class="small-text">Fashioned from the polished bone of an unknown creature and bound with blackened silver, these unsettling pan pipes seem to breathe on their own. Hairline cracks across each pipe exhale whispers that vanish before words can be understood, while tiny faces occasionally appear within the polished ivory, silently screaming before fading away. Legends claim the pipes were crafted by a bard who wandered the Shadowfell for so long that he no longer distinguished between memory and nightmare. Those who hear their melodies seldom recall the tune itself—but many remember the terrible visions that accompanied it.</p>
+				<p class="small-text"><em>"The melody is beautiful. The things it reminds you of are not."</em> —Inscription found upon the case of Haunts of the Macabre</p>
+            </div>
+
+    <!--        <div class="card p-3">
+                <h4 class="section-title">Personality</h4>
+                <p class="small-text">Traits, ideals, bonds, flaws...</p>
+	-->
+            </div>
+
+
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+fetch("navbar.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("navbar").innerHTML = data;
+  });
+</script>
+</body>
+</html>
