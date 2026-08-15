@@ -249,16 +249,17 @@ const events = {
   "Hammer-17": "Calamity! - Impilturian Earthquake",
   "Ches-1": "The King's Royal Ball at Castle",
   "Ches-2": "The prince, Ellawain, Ikari, and Delon set forth for West-Over-Farthing on a quest to find Narmus Sting's body, and to investigate the earthquake.",
-  "Ches-4": "The prince and companions reach West-Over-Farthing, and are joined by additional companions: Vichenzo and Stiora."
+  "Ches-4": "The prince and companions reach West-Over-Farthing, and are joined by additional companions: Vichenzo and Stiora.",
+  "Ches-7": "The second calamity! The king and his heir are dead."
 };
 
 let currentMonth = 0;
 
 function getMoonPhase(day) {
-  if (day % 30 === 0) return "🌑";
-  if (day % 15 === 0) return "🌕";
-  if (day % 7 === 0) return "🌓";
-  if (day % 22 === 0) return "🌗";
+  if (day === (5 + currentMonth) % 30) return "🌕";
+  if (day === (20 + currentMonth) % 30) return "🌑";
+  if (day === (12 + currentMonth) % 30) return "🌓";
+  if (day === (27 + currentMonth) % 30) return "🌗";
   return "";
 }
 
