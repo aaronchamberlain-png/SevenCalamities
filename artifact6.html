@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moonlight Coil</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Banner -->
+<img src="images/banner.png" alt="Banner" class="banner">
+
+<!-- Navigation Bar -->
+<div id="navbar"></div>
+
+<!-- Content -->
+<div class="container content">
+
+    <!-- Character Header -->
+    <div class="text-center">
+        <h1 class="section-title">Moonlight Coil</h1>
+        <p class="small-text"><em>Legendary | Whip (requires attunement by Ikari)</em></p>
+    </div>
+
+    <!-- Two Column Layout -->
+    <div class="row mt-4">
+
+        <!-- Left Column: Top and Bottom Images -->
+        <div class="col-md-5">
+            <div class="card p-3">
+                <img src="images/moonlight_coil.png" class="img-fluid rounded" alt="Character Image">
+            </div>
+            <div class="card p-3">
+                <img src="images/moonlight_shield.png" class="img-fluid rounded" alt="Character Image">
+            </div>
+        </div>
+
+        <!-- Right Column: Stats & Details -->
+        <div class="col-md-7">
+            <div class="card p-3 mb-3">
+                <h5 class="section-title">Powers and Abilities</h5>
+                <ul class="small-text">
+                    <li>
+<p><span style="font-style:italic;">This strange weapon appears to be a slender whip formed from braided strands of silver-white moonlight. Its handle is cool silver, etched with the phases of the moon, while the radiant strands of the weapon constantly drift and curl as though moved by an unseen breeze. When held by one chosen by Selûne, the Coil seems almost weightless, yet it strikes with the force of divine radiance.</span></p>
+<p>You gain a <strong>+1 bonus to attack and damage</strong> rolls made with this magic weapon.
+</p>
+</li>
+                    <li><p><strong>Coiled Moonshield</strong></p><p>The Moonlight Coil can transform between a whip and a small, circular shield of condensed moonlight. As a bonus action, you may cause the whip to coil, transforming into a +1 shield. While in shield form, it functions as a normal shield and grants a +1 bonus to AC. As a free action, you may cause the shield to unravel, returning the Moonlight Coil to its whip form.</p><p><strong>Moonlit Retribution.</strong></p><p>Twice per short or long rest, when a creature you can see hits you with a melee attack while the Moonlight Coil is in shield form, you may use your reaction to cause the shield to erupt with brilliant moonlight. The attacking creature takes 2d6 radiant damage.</p>
+</li>
+<li><p><strong>Starry Wisp</strong></p>
+<p>While the Moonlight Coil is in whip form, you may use one attack to release a tiny mote of divine moonlight. The mote functions as the Starry Wisp spell cast as a 1st-level spell, using Strength or Dexterity as your spellcasting ability for the attack. Add either your Strength or Dexterity to damage rolls of the spell.</p>
+</li>
+<li><p><strong>Lunar Metamorphosis</strong></p>
+<p>As a bonus action, you may command the Moonlight Coil to transform into any melee weapon with which you are proficient. The weapon retains its +1 magical bonus to attack and damage rolls. Once you use Lunar Metamorphosis, you cannot use it again until you finish a short or long rest.</p>
+<p>The transformed weapon lasts for 1 minute, until you dismiss the transformation as a free action, or until you transform the Coil into another form. The weapon deals its normal damage type and uses its normal properties as appropriate to its form.
+</p>
+<p><span style="font-style:italic;">"The Coil remembers the shape of every weapon that has ever been raised beneath the moon."</span></p>
+</li>
+<li>
+<p><strong>Fount of Moonlight</strong></p>
+<p>
+Divinely Granted – As Spell. Selûne's power flows through the bearer of the Moonlight Coil. The Fount of Moonlight does not require concentration.
+</p>
+<p><span style="font-style:italic;">"The moon does not ask the darkness for permission to shine."</span></p>
+</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+        <!-- History -->
+	<div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card p-3 mb-3">
+                <h4 class="section-title">History</h4>
+                <p class="small-text">The Moonlight Coil was divinely granted to Ikari by Selûne beneath the light of the full moon, during the desperate hardship of his encounter with the Dark Lady. As hope seemed lost and the darkness closed around him, a single thread of moonlight descended from the heavens and coiled itself into his waiting hand. From that moment onward, the weapon became a living symbol of Selûne’s favor, carrying her radiant power wherever Ikari walks beneath the night sky.</p>
+				<p class="small-text"><span style="font-style:italic;">"When the darkness closed around Ikari, Selûne did not send a champion to save him—she placed her own light in his hand, and made him her chosen."</span></p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+fetch("navbar.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("navbar").innerHTML = data;
+  });
+</script>
+</body>
+</html>
